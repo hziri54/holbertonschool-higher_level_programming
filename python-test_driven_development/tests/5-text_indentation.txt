@@ -1,0 +1,39 @@
+Doctest for 5-text_indentation.py
+
+The fonction prints a text with 2 new lines after each of these characters: ., ? and :
+
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+================
+Test for success
+================
+
+>>> text_indentation("Pourquoi?")
+Pourquoi?
+<BLANKLINE>
+
+>>> text_indentation("    Python.")
+Python.
+<BLANKLINE>
+
+>>> text_indentation("Python.    ")
+Python.
+<BLANKLINE>
+
+>>> text_indentation("    Mais non.    C'est pas vrai.   ")
+Mais non.
+<BLANKLINE>
+C'est pas vrai.
+<BLANKLINE>
+
+=============
+Test for fail
+=============
+
+>>> text_indentation(77)
+Traceback (most recent call last):
+TypeError: text must be a string
+
+>>> text_indentation()
+Traceback (most recent call last):
+TypeError: text_indentation() missing 1 required positional argument: 'text'
