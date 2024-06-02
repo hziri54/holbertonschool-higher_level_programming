@@ -1,17 +1,17 @@
-#!/usr/bin/env python3
-"""Learn pickle module"""
+#!/usr/bin/python3
+"""Learn pickle"""
 import pickle
 
 
 class CustomObject:
     def __init__(self, name, age, is_student):
-        """Initialize a CustomObject"""
+        """init CustomObject"""
         self.name = name
         self.age = age
         self.is_student = is_student
 
     def display(self):
-        """Display CustomObject"""
+        """display CustomObject"""
         print("Name: {}".format(self.name))
         print("Age: {}".format(self.age))
         print("Is Student: {}".format(self.is_student))
@@ -23,12 +23,12 @@ class CustomObject:
                 pickle.dump(self, f)
         except (FileNotFoundError, pickle.PickleError):
             return None
-
+        
     @classmethod
     def deserialize(cls, filename):
         """Deserialize CustomObject"""
-        try:
+        try: 
             with open(filename, 'rb') as f:
                 return pickle.load(f)
         except (FileNotFoundError, pickle.PickleError):
-            return None
+                return None
