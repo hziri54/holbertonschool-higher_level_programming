@@ -67,3 +67,4 @@ class Rectangle:
     def __del__(self):
         """print mess for del of rectangle"""
         print("Bye rectangle...")
+
