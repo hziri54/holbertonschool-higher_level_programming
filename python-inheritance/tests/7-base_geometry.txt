@@ -1,0 +1,71 @@
+Doctest for 7-base_geometry.txt
+
+The function print the list
+
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+>>> bg = BaseGeometry()
+
+================
+Test for success
+================
+
+>>> bg.integer_validator("my_int", 12)
+
+>>> bg.integer_validator("width", 89)
+
+=============
+Test for fail
+=============
+
+>>> bg = BaseGeometry(rien)
+Traceback (most recent call last):
+NameError: name 'rien' is not defined
+
+>>> bg.area()
+Traceback (most recent call last):
+Exception: area() is not implemented
+
+>>> bg.integer_validator("adry", "number")
+Traceback (most recent call last):
+TypeError: adry must be an integer
+
+>>> bg.integer_validator("jesaispas", (1,))
+Traceback (most recent call last):
+TypeError: jesaispas must be an integer
+
+>>> bg.integer_validator("gtr", [3])
+Traceback (most recent call last):
+TypeError: gtr must be an integer
+
+>>> bg.integer_validator("toujours pas", -1)
+Traceback (most recent call last):
+ValueError: toujours pas must be greater than 0
+
+>>> bg.integer_validator(None)
+Traceback (most recent call last):
+TypeError: BaseGeometry.integer_validator() missing 1 required positional argument: 'value'
+
+>>> bg.integer_validator({"a": 1}, (1, 2))
+Traceback (most recent call last):
+TypeError: {'a': 1} must be an integer
+
+>>> bg.integer_validator()
+Traceback (most recent call last):
+TypeError: BaseGeometry.integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+>>> bg.integer_validator("passe", (9, 6, 2))
+Traceback (most recent call last):
+TypeError: passe must be an integer
+
+>>> bg.integer_validator("caca", True)
+Traceback (most recent call last):
+TypeError: caca must be an integer
+
+>>> bg.integer_validator("maes", {0, 4})
+Traceback (most recent call last):
+TypeError: maes must be an integer
+
+>>> bg.integer_validator("rien ne passe j'en ai marre", None)
+Traceback (most recent call last):
+TypeError: rien ne passe j'en ai marre must be an integer
