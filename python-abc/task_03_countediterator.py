@@ -1,21 +1,25 @@
 #!/usr/bin/python3
-"""Task 3: Counted Iterator"""
+"""A class that wraps an iterator and keeps
+track of the number of iterations"""
 
 
 class CountedIterator:
-    """Counted Iterator"""
-
+    """A class that wraps an iterator and keeps
+    track of the number of iterations"""
     def __init__(self, some_iterable):
+        """Initialize the iterator and counter"""
         self.iterator = iter(some_iterable)
         self.counter = 0
 
     def get_count(self):
+        """Return the current count"""
         return self.counter
 
     def __next__(self):
+        """Override the next method to increment the counter"""
         try:
-            a = next(self.iterator)
+            i = next(self.iterator)
             self.counter += 1
-            return a
+            return i
         except StopIteration:
             raise StopIteration
