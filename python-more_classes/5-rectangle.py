@@ -72,7 +72,7 @@ class Rectangle:
         """Prints a message when the rectangle instance is deleted."""
         print("Bye rectangle...")
 
-# Example usage (from the provided 5-main.py file)
+
 if __name__ == "__main__":
     my_rectangle = Rectangle(2, 4)
     print("Area: {} - Perimeter: {}".format(my_rectangle.area(), my_rectangle.perimeter()))
