@@ -39,7 +39,7 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
 
 if __name__ == '__main__':
     # Serveur HTTP sur le port 8080
-    server_address = ('', 8080)
+    server_address = ('', 8080)  # Assurez-vous que le port n'est pas occupé
     httpd = http.server.HTTPServer(server_address, MyHandler)
     print("Serving on port 8080...")
     httpd.serve_forever()
