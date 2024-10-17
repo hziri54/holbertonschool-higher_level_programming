@@ -1,53 +1,46 @@
-#!/usr/bin/python3
-
-import json
 import http.server
-
-"""
-class for simple API
-"""
+import json
 
 
-class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
-
-    """
-    definition of the GET method
-    """
-
+class MyHandler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
+        # Route principale "/"
         if self.path == '/':
-            self.send_response(200)
-            self.send_header('Content-type', 'text/plain')
+            self.send_response(200)  # Code 200 OK
+            self.send_header('Content-type', 'text/plain')  # Type: texte brut
             self.end_headers()
-            self.wfile.write(b'Hello, this is a simple API!')
-        elif self.path == "/data":
-            self.send_response(200)
-            self.send_header("Content-type", "application/json")
-            self.end_headers()
+            self.wfile.write(b'Hello, this is a simple API!')  # Réponse texte
+
+        # Route "/data" : renvoyer des données JSON
+        elif self.path == '/data':
             data = {"name": "John", "age": 30, "city": "New York"}
-            self.wfile.write(json.dumps(data).encode())
-        elif self.path == '/info':
-            self.send_response(200)
-            self.send_header('Content-type', 'application/json')
+            self.send_response(200)  # Code 200 OK
+            self.send_header('Content-type', 'application/json')  # Type: JSON
             self.end_headers()
-            json_data = {"version": "1.0",
-                         "description": "A simple API built with http.server"}
-            json_bytes = json.dumps(json_data).encode("utf-8")
-            self.wfile.write(json_bytes)
-        elif self.path == "/status":
-            self.send_response(200)
-            self.send_header("Content-type", "text/plain")
+            # Renvoyer les données encodées en JSON
+            self.wfile.write(json.dumps(data).encode('utf-8'))
+
+        # Route "/status" : renvoyer le statut de l'API
+        elif self.path == '/status':
+            self.send_response(200)  # Code 200 OK
+            self.send_header('Content-type', 'text/plain')  # Type: texte brut
             self.end_headers()
-            self.wfile.write(b"OK")
+            self.wfile.write(b'OK')  # Réponse OK
+
+        # Route non définie (404 Not Found)
         else:
-            self.send_response(404)
-            self.send_header("Content-type", "text/plain")
+            self.send_response(404)  # Code 404 Not Found
+            self.send_header('Content-type', 'application/json')  # Type: JSON
             self.end_headers()
-            self.wfile.write(b"Endpoint not found")
+            # Renvoyer une erreur en JSON
+            error_message = {"error": "404 Not Found"}
+            self.wfile.write(json.dumps(error_message).encode('utf-8'))
 
 
-PORT = 8000
-
-
-with http.server.HTTPServer(("", PORT), SimpleHTTPRequestHandler) as httpd:
+if __name__ == '__main__':
+    # Serveur HTTP sur le port 8001
+    server_address = ('', 8001)
+    httpd = http.server.HTTPServer(server_address, MyHandler)
+    print("Serving on port 8001...")
     httpd.serve_forever()
+
