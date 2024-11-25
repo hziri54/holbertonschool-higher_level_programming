@@ -1,8 +1,6 @@
 #!/usr/bin/python3
-def uppercase(str):
-    result = ""
-    for char in str:
-        if ord('a') <= ord(char) <= ord('z'):
-            char = chr(ord(char) - 32)
-        result += char
-    print(result)
+def islower(c):
+    if ord(c) >= 97 and ord(c) <= 122:
+        return True
+    else:
+        return False
