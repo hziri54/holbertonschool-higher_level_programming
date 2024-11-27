@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    document.querySelector('#red-header').addEventListener('click', function() {
-      document.querySelector('header').style.color = '#FF000';
-    });
+  document.querySelector('#red-header').addEventListener('click', function() {
+    document.querySelector('header').style.color = '#FF000';
   });
+});
