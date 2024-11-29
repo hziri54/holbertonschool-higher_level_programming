@@ -18,7 +18,7 @@ if __name__ == "__main__":
     cur.execute("SELECT * FROM states ORDER BY id ASC")
     rows = cur.fetchall()
     for row in rows:
-        print(row)
+        print("({}, '{}')".format(row[0], row[1]))
     cur.close()
     db.close()
 
