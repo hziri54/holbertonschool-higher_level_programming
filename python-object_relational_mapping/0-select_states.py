@@ -1,30 +1,37 @@
 #!/usr/bin/python3
-"""Defines a text function."""
+"""
+This script lists all states from the database `hbtn_0e_0_usa`.
 
-def text_indentation(text):
-    """Print text with 2 new lines after the characters ., ? and :"""
+Arguments:
+    mysql_username: Your MySQL username.
+    mysql_password: Your MySQL password.
+    database_name: The name of the database to connect to.
 
-    if not isinstance(text, str):
-        raise TypeError("text must be a string")
+The script connects to a MySQL server running on localhost at port 3306
+and fetches all rows in the `states` table, sorted in ascending order by `id`.
+"""
 
-    i = 0
-    while i < len(text):
-        # Skip leading spaces
-        if text[i] == ' ':
-            i += 1
-            continue
+if __name__ == "__main__":
+    import sys
+    import MySQLdb
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
 
-        # Print characters until ., ?, or :
-        print(text[i], end="")
+    db = MySQLdb.connect(
+        host="localhost",
+        port=3306,
+        user=username,
+        passwd=password,
+        db=database
+    )
 
-        # If ., ?, or : found, print two new lines
-        if text[i] in ".?:":
-            print("\n")
-            i += 1
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM states ORDER BY id ASC")
+    states = cursor.fetchall()
 
-            # Skip spaces after punctuation
-            while i < len(text) and text[i] == ' ':
-                i += 1
-            continue
+    for state in states:
+        print(state)
 
-        i += 1
+    cursor.close()
+    db.close()
