@@ -1,0 +1,39 @@
+Doctest for 5-text_indentation.py
+
+Print a text with 2 line after the character ., ? and :
+
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+================
+Test for success
+================
+
+>>> text_indentation("Infini.")
+Infini.
+<BLANKLINE>
+
+>>> text_indentation("Messi.")
+Messi.
+<BLANKLINE>
+
+>>> text_indentation("		Fleurs.")
+Fleurs.
+<BLANKLINE>
+
+>>> text_indentation("		Messi.   	Meilleur.	")
+Messi.
+<BLANKLINE>
+Meilleur.
+<BLANKLINE>
+
+==============
+Test for fail
+==============
+
+>>> text_indentation(1)
+Traceback (most recent call last):
+TypeError: text must be a string
+
+>>> text_indentation()
+Traceback (most recent call last):
+TypeError: text_indentation() missing 1 required positional argument: 'text'
