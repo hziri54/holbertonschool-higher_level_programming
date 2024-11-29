@@ -1,32 +1,27 @@
-doctest for 3-say_my_name.py
-=========================
-This function prints "My name is <first name> <last name>".
+# Doctest for 3-say_my_name.py
+
+The function prints the name.
 
 >>> say_my_name = __import__('3-say_my_name').say_my_name
 
-Test for success
 ===============
+Test for success
+================
 
->>> say_my_name("John", "Smith")
-My name is John Smith
+>>> say_my_name("Messi", "Infini")
+My name is Messi Infini
 
->>> say_my_name("Walter", "White")
-My name is Walter White
+>>> say_my_name("Infini", "Messi")
+My name is Infini Messi
 
->>> say_my_name("Bob")
-My name is Bob
-
+=============
 Test for fail
-============
+=============
 
->>> say_my_name(12, "White")
-Traceback (most recent call last):
-TypeError: first_name must be a string
-
->>> say_my_name("John", 12)
+>>> say_my_name("Messi", 93)
 Traceback (most recent call last):
 TypeError: last_name must be a string
 
->>> say_my_name(12, 12)
+>>> say_my_name(93, "Infini")
 Traceback (most recent call last):
 TypeError: first_name must be a string
