@@ -10,10 +10,10 @@ if __name__ == "__main__":
         passwd=sys.argv[2],
         db=sys.argv[3]
     )
-    cur = db.cursor()
-    cur.execute("SELECT id, name FROM states ORDER BY id ASC")
-    rows = cur.fetchall()
-    for row in rows:
-        print("({}, '{}')".format(row[0], row[1]))
-    cur.close()
+    cursor = db.cursor()
+    cursor.execute("SELECT id, name FROM states ORDER BY id ASC")
+    result = cursor.fetchall()
+    for row in result:
+        print(row)
+    cursor.close()
     db.close()
