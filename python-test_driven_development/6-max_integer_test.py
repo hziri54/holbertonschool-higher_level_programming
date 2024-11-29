@@ -1,46 +1,34 @@
 #!/usr/bin/python3
-"""Unittest for max_integer([..])"""
-
+"""Unittest for max_integer([..])
+"""
 import unittest
 max_integer = __import__('6-max_integer').max_integer
 
 class TestMaxInteger(unittest.TestCase):
-    """Class for testing the max_integer function"""
-
-    def test_max_integer(self):
-        """Test for normal cases"""
-
-        # Test with a normal list of positive integers
+    """unittest max_integer"""
+    def test_list(self):
         self.assertEqual(max_integer([1, 2, 3, 4]), 4)
 
-        # Test with a list of mixed integers
-        self.assertEqual(max_integer([1, 3, 4, 2]), 4)
+    def test_reverse_list(self):
+        self.assertEqual(max_integer([4, 3, 2, 1]), 4)
 
-        # Test with a list of negative integers
+    def test_middle_list(self):
+        self.assertEqual(max_integer([1, 2, 4, 3]), 4)
+
+    def test_same_list(self):
+        self.assertEqual(max_integer([1, 1, 1, 1]), 1)
+
+    def test_negative_number(self):
         self.assertEqual(max_integer([-1, -2, -3, -4]), -1)
 
-        # Test with a list containing both positive and negative numbers
-        self.assertEqual(max_integer([-1, 2, 3, -4]), 3)
+    def test_float_list(self):
+        self.assertEqual(max_integer([1.5, 2.5, 3.5, 4.5]), 4.5)
+
+    def test_one_element_list(self):
+        self.assertEqual(max_integer([1]), 1)
+
+    def test_string(self):
+        self.assertEqual(max_integer(["Zamdane"]), "Zamdane")
 
     def test_empty_list(self):
-        """Test with an empty list"""
-        self.assertEqual(max_integer([]), None)
-
-    def test_single_element(self):
-        """Test with a list containing one element"""
-        self.assertEqual(max_integer([5]), 5)
-
-    def test_identical_elements(self):
-        """Test with a list of identical elements"""
-        self.assertEqual(max_integer([7, 7, 7]), 7)
-
-    def test_large_numbers(self):
-        """Test with a list of very large numbers"""
-        self.assertEqual(max_integer([1000000000, 2000000000, 3000000000]), 3000000000)
-
-    def test_floats(self):
-        """Test with a list of floats"""
-        self.assertEqual(max_integer([1.1, 2.2, 3.3]), 3.3)
-
-if __name__ == "__main__":
-    unittest.main()
+        self.assertIsNone(max_integer([]), None)
